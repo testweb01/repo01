@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "Publishing content..."
           cat content/date.txt
-          # Add your publishing commands here
+          # Add your publishing commands here5
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
