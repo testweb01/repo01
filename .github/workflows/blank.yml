@@ -32,6 +32,7 @@ jobs:
       - name: create content
         run: |
              mkdir content 
+             echo $(date)
              echo $(date) > content/date.txt
 
       - name: artifact
@@ -44,6 +45,24 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo $MY_TOKEN
+
+  publish:
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs:
+    - build
+
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: documentation
+        path: content
+
+    - name: cat file
+      run: |
+           echo today $(date)
+           cat content/date.txt
           
 
           
