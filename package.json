@@ -1,0 +1,24 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "A simple Node.js project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/my-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yourusername/my-project/issues"
+  },
+  "homepage": "https://github.com/yourusername/my-project#readme",
+  "devDependencies": {
+    "jest": "^27.0.0"
+  }
+}
