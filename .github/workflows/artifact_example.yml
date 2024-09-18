@@ -22,13 +22,13 @@ jobs:
              echo $(date) > content/date.txt
       - name: artifact
         uses: actions/upload-artifact@v4
-        with:
-          name: ${{ github.sha }}
-          path: content
+        
 
       - name: Run a multi-line script
         run: |
-          echo $MY_TOKEN
+          echo pwd $(pwd)
+          ls
+           
 
   publish:
     needs: build
