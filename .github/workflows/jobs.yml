@@ -16,10 +16,7 @@ jobs:
       - name: create content
         run: |
              mkdir content 
-             echo $(date) > content/date.txt
-      - name: artifact
-        uses: actions/upload-artifact@v4
-        
+             echo $(date) > content/date.txt           
 
       - name: Run a multi-line script
         run: |
