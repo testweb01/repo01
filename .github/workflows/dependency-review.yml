@@ -1,0 +1,39 @@
+name: jobs-state
+
+on:
+ 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MY_TOKEN: ${{ secrets.MY_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: create content
+        run: |
+             mkdir content 
+             echo $(date) > content/date.txt
+      - name: artifact
+        uses: actions/upload-artifact@v4
+        
+
+      - name: Run a multi-line script
+        run: |
+          echo pwd $(pwd)
+          ls
+           
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: content/date.txt
+        run: cat content/date.txt
+ 
