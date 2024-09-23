@@ -42,7 +42,7 @@ jobs:
              a=`npm root -g`
              ls $a
 
-    - uses: testweb01/actionTest@v5
+    - uses: testweb01/actionTest@v6
       with:
           repoToken: '${{ env.SEMGREP_APP_TOKEN }}'
           semToken: '${{ secrets.SEMGREP_APP_TOKEN }}'
