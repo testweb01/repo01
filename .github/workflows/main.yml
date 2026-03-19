@@ -1,0 +1,22 @@
+name: Test
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4.1.4
+      
+
+      - name: Configure .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.MY_TOKEN }}" > ~/.npmrc
+
+      - name: cat
+        run: cat ~/.npmrc
